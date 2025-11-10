@@ -78,7 +78,8 @@ namespace e_Datos
                     nivel = Convert.ToInt32(sqlLeer["Nivel"])
                 };
                 return objEnti;
-            }
+            }else
+                return null;
 
         }
     }

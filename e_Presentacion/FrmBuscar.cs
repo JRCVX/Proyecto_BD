@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using e_Entidad;
+using e_Logica;
 
 namespace e_Presentacion
 {
     public partial class FrmBuscar : Form
     {
+        ClEntidades objEnti = new ClEntidades();
+        ClNexo objNexo = new ClNexo();
         public FrmBuscar()
         {
             InitializeComponent();
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            int codigo= int.Parse(TxtID.Text);
+            objNexo.DarValores(codigo);
+            
         }
     }
 }
