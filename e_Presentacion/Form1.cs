@@ -43,5 +43,11 @@ namespace e_Presentacion
             FrmEliminar frmEliminar = new FrmEliminar();
             frmEliminar.ShowDialog();
         }
+
+        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBuscar frmBuscar= new FrmBuscar();
+            frmBuscar.ShowDialog();
+        }
     }
 }
