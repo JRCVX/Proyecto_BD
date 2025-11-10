@@ -67,8 +67,19 @@ namespace e_Datos
             objConec.Abrir();  
             string sql = "SELECT * FROM TblDatos WHERE Id_Estudiante = '"+Dato+"'";
             SqlCommand sqlC = new SqlCommand(sql, objConec.conectar);
-            sqlC.ExecuteNonQuery();
-            objConec.Cerrar();
+            SqlDataReader sqlLeer = sqlC.ExecuteReader();
+
+            if (sqlLeer.Read())
+            {
+                ClEntidades objEnti = new ClEntidades
+                {
+                    Id_Es = Convert.ToInt32(sqlLeer["Id_Estudiante"]),
+                    Nombre_Es = sqlLeer["Nombre"].ToString(),
+                    nivel = Convert.ToInt32(sqlLeer["Nivel"])
+                };
+                return objEnti;
+            }
+
         }
     }
 }

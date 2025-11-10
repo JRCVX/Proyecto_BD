@@ -25,5 +25,10 @@ namespace e_Logica
         {
             objOpera.Eliminar(dato);
         }
+
+        public ClEntidades DarValores(int dato)
+        {
+            return objOpera.DarValores(dato);
+        }
     }
 }
