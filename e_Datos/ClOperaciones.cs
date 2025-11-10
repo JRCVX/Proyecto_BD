@@ -52,5 +52,23 @@ namespace e_Datos
             sqlC.ExecuteNonQuery();
             objConec.Cerrar();
         }
+
+        public void Eliminar (int dato)
+        {
+            objConec.Abrir();
+            string sql = "DELETE FROM TblDatos WHERE Id_Estudiante = '"+dato+"'";
+            SqlCommand sqlC = new SqlCommand (sql, objConec.conectar);
+            sqlC.ExecuteNonQuery();
+            objConec.Cerrar();
+        }
+
+        public ClEntidades DarValores(int Dato)
+        {
+            objConec.Abrir();  
+            string sql = "SELECT * FROM TblDatos WHERE Id_Estudiante = '"+Dato+"'";
+            SqlCommand sqlC = new SqlCommand(sql, objConec.conectar);
+            sqlC.ExecuteNonQuery();
+            objConec.Cerrar();
+        }
     }
 }

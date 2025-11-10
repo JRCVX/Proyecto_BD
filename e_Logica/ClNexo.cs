@@ -20,5 +20,10 @@ namespace e_Logica
         {
             objOpera.Insertar(Datos);
         }
+
+        public void Borrar(int dato)
+        {
+            objOpera.Eliminar(dato);
+        }
     }
 }

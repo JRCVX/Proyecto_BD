@@ -37,5 +37,11 @@ namespace e_Presentacion
             FrmIngresar frmIngresar = new FrmIngresar();
             frmIngresar.ShowDialog();
         }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEliminar frmEliminar = new FrmEliminar();
+            frmEliminar.ShowDialog();
+        }
     }
 }

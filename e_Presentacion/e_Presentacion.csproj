@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEliminar.Designer.cs">
+      <DependentUpon>FrmEliminar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmIngresar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEliminar.resx">
+      <DependentUpon>FrmEliminar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIngresar.resx">
       <DependentUpon>FrmIngresar.cs</DependentUpon>

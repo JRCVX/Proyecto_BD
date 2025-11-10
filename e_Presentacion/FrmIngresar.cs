@@ -85,5 +85,10 @@ namespace e_Presentacion
             objEntidad.nivel = nivel;
             objNexo.Ingresar(objEntidad);
         }
+
+        private void BtnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
