@@ -20,34 +20,54 @@ namespace e_Presentacion
         {
             InitializeComponent();
         }
-        
-        private void Form1_Load(object sender, EventArgs e)
+        private void CargarLista()
         {
-               
+            // 1. Limpiar el ListBox para evitar duplicados
+            listBox1.Items.Clear();
+
+            // 2. Obtener la lista actualizada desde la base de datos
             List<ClEntidades> lista = objNexo.ListaR();
 
-            foreach (ClEntidades datos in lista)
+            // 3. Volver a llenar el ListBox
+            if (lista != null) // Buena práctica: verificar que la lista no sea nula
             {
-                listBox1.Items.Add("ID: " + datos.Id_Es + " | Nombre: " + datos.Nombre_Es + " | Nivel: " + datos.nivel);
+                foreach (ClEntidades datos in lista)
+                {
+                    listBox1.Items.Add("ID: " + datos.Id_Es + " | Nombre: " + datos.Nombre_Es + " | Nivel: " + datos.nivel);
+                }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            CargarLista();
         }
 
         private void ingrsarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmIngresar frmIngresar = new FrmIngresar();
             frmIngresar.ShowDialog();
+            CargarLista();
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmEliminar frmEliminar = new FrmEliminar();
             frmEliminar.ShowDialog();
+            CargarLista();
         }
 
         private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBuscar frmBuscar= new FrmBuscar();
             frmBuscar.ShowDialog();
+        }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmEditar frmEditar = new FrmEditar();
+            frmEditar.ShowDialog();
+            CargarLista();
         }
     }
 }

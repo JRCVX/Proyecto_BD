@@ -14,7 +14,7 @@ namespace e_Presentacion
 {
     public partial class FrmBuscar : Form
     {
-        ClEntidades objEnti = new ClEntidades();
+        
         ClNexo objNexo = new ClNexo();
         public FrmBuscar()
         {
@@ -23,9 +23,30 @@ namespace e_Presentacion
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
-            int codigo= int.Parse(TxtID.Text);
-            objNexo.DarValores(codigo);
-            
+            try
+            {
+
+                int codigo = Convert.ToInt16(TxtID.Text);
+                objNexo.DarValores(codigo);
+                ClEntidades estudiantes = objNexo.DarValores(codigo);
+                if (estudiantes != null)
+                {
+                    LblNom.Text = estudiantes.Nombre_Es;
+                    LblNivel.Text = estudiantes.nivel.ToString();
+                }
+                else
+                    MessageBox.Show("El estudiante solicitado no existe");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al buscar el estudiante: " + ex.Message);
+
+
+            }
         }
+
+
     }
 }
+

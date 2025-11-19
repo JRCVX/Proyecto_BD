@@ -64,23 +64,47 @@ namespace e_Datos
 
         public ClEntidades DarValores(int Dato)
         {
-            objConec.Abrir();  
-            string sql = "SELECT * FROM TblDatos WHERE Id_Estudiante = '"+Dato+"'";
-            SqlCommand sqlC = new SqlCommand(sql, objConec.conectar);
-            SqlDataReader sqlLeer = sqlC.ExecuteReader();
-
-            if (sqlLeer.Read())
+            ClEntidades objEnti;
+            try
             {
-                ClEntidades objEnti = new ClEntidades
-                {
-                    Id_Es = Convert.ToInt32(sqlLeer["Id_Estudiante"]),
-                    Nombre_Es = sqlLeer["Nombre"].ToString(),
-                    nivel = Convert.ToInt32(sqlLeer["Nivel"])
-                };
-                return objEnti;
-            }else
-                return null;
+                objConec.Abrir();
+                string sql = "SELECT * FROM TblDatos WHERE Id_Estudiante = '"+Dato+"'";
+                SqlCommand sqlC = new SqlCommand(sql, objConec.conectar);
+                SqlDataReader sqlLeer = sqlC.ExecuteReader();
 
+                if (sqlLeer.Read())
+                {
+                    objEnti = new ClEntidades
+                    {
+                        Id_Es = Convert.ToInt32(sqlLeer["Id_Estudiante"]),
+                        Nombre_Es = sqlLeer["Nombre"].ToString(),
+                        nivel = Convert.ToInt32(sqlLeer["Nivel"])
+                    };
+                }
+                else
+                {
+                    objEnti = null;
+                }
+
+                sqlLeer.Close();
+                objConec.Cerrar();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al obtener los valores: " + ex.Message);
+                objEnti = null;
+            }
+            return objEnti;
+        }
+
+        public void Actualizar(ClEntidades Datos)
+        {
+            objConec.Abrir();
+            string sql = "UPDATE TblDatos SET Nombre = '" + Datos.Nombre_Es + "', Nivel = " + Datos.nivel + " WHERE Id_Estudiante = " + Datos.Id_Es;
+            SqlCommand sqlC = new SqlCommand(sql, objConec.conectar);
+            sqlC.ExecuteNonQuery();
+            objConec.Cerrar();
         }
     }
 }

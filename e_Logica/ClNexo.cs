@@ -30,5 +30,10 @@ namespace e_Logica
         {
             return objOpera.DarValores(dato);
         }
+
+        public void Actualizar(ClEntidades Datos)
+        {
+            objOpera.Actualizar(Datos);
+        }
     }
 }
