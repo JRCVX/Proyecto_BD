@@ -69,5 +69,10 @@ namespace e_Presentacion
             frmEditar.ShowDialog();
             CargarLista();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
